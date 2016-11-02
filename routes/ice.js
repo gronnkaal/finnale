@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.send('You have reached /ice');
 });
 
-/* GET /json */
-router.get('/json', function(req, res, next) {
+/* GET /bandwidth */
+router.get('/bandwidth', function(req, res, next) {
 
   var fs = require('fs'), obj;
   
@@ -16,7 +16,7 @@ router.get('/json', function(req, res, next) {
   function handleFile(err, data) {
       if (err) throw err
       obj = JSON.parse(data)
-      res.json(obj)
+      res.json(obj.bandwidth)
   }
   
 });
