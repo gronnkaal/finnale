@@ -54,7 +54,7 @@ fa_data = []
 
 fa=BeautifulSoup(f.content, "html5lib")
 
-fa_table = fa.find('table', id='tblAbonnement')
+fa_table = fa.find('table', id=cfg["is"]["table_abo"])
 fa_rows = fa_table.findAll('tr')
 
 for tr in fa_rows:
