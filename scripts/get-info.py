@@ -1,16 +1,19 @@
 import requests
 import json
+import yaml
 from bs4 import BeautifulSoup
-import config
+
+with open("config.yml", 'r') as config:
+  cfg = yaml.load(config)
 
 # Parameters
 
-URL_LOGIN=isUrlLogin
-URL_OVERVIEW=isUrlOverivew
-URL_MYPAGE=isUrlMyPage
+URL_LOGIN=cfg['is']['login']
+URL_OVERVIEW=cfg['is']['overview']
+URL_MYPAGE=cfg['is']['mypage']
 
-username=isUsername
-password=isPassword
+username=cfg['is']['username']
+password=cfg['is']['password']
 
 headers={"User-Agent":"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36"}
 
