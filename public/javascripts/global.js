@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
   getBandwidthInfo();
+  getIceInfo();
 });
 
 // Functions
@@ -12,7 +13,16 @@ function getBandwidthInfo() {
   	bandwidthUsed = (data.usage / 1000 / 1000).toFixed(2)
   	bandwidthLimit = (data.limit / 1000 / 1000).toFixed(2)
 
-    $('#bandwidthInfoUsed').text(bandwidthUsed);
-    $('#bandwidthInfoLimit').text(bandwidthLimit);
+    $('#iceBandwidthUsed').text(bandwidthUsed);
+    $('#iceBandwidthLimit').text(bandwidthLimit);
+  });
+};
+
+
+function getIceInfo() {
+  $.getJSON('/ice/info', function(data) {
+
+    $('#iceInfoSim').text(data.sim);
+    $('#iceInfoIp').text(data.ip);
   });
 };
