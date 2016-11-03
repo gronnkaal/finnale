@@ -8,12 +8,12 @@ with open("config.yml", 'r') as config:
 
 # Parameters
 
-URL_LOGIN=cfg['is']['login']
-URL_OVERVIEW=cfg['is']['overview']
-URL_MYPAGE=cfg['is']['mypage']
+URL_LOGIN=cfg["is"]["login"]
+URL_OVERVIEW=cfg["is"]["overview"]
+URL_MYPAGE=cfg["is"]['mypage']
 
-username=cfg['is']['username']
-password=cfg['is']['password']
+username=cfg["is"]["username"]
+password=cfg["is"]["password"]
 
 headers={"User-Agent":"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36"}
 
