@@ -1,13 +1,13 @@
 // DOM ready
 
 $(document).ready(function() {
-  getBandwidthInfo();
+  getIceBandwidth();
   getIceInfo();
 });
 
 // Functions
 
-function getBandwidthInfo() {
+function getIceBandwidth() {
   $.getJSON('/ice/bandwidth', function(data) {
 
   	bandwidthUsed = (data.usage / 1000 / 1000).toFixed(2)
