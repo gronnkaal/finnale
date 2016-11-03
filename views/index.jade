@@ -2,8 +2,13 @@ extends layout
 
 block content
   h1= title
-    h2 Overview
+    h2 ICE
     #wrapper
-      #bandwidthInfo
+      #iceBandwidth
       p Usage: 
-          |  <span id='bandwidthInfoUsed'></span> / <span id='bandwidthInfoLimit'></span> MB
+        |  <span id='iceBandwidthUsed'></span> / <span id='iceBandwidthLimit'></span> MB
+      #iceInfo
+      p SIM: 
+        |  <span id='iceInfoSim'></span>
+      p IP: 
+        |  <span id='iceInfoIp'></span>
