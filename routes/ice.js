@@ -11,7 +11,7 @@ router.get('/bandwidth', function(req, res, next) {
 
   var fs = require('fs'), obj;
   
-  fs.readFile('./private/ice.json', handleFile)
+  fs.readFile('../private/ice.json', handleFile)
  
   function handleFile(err, data) {
       if (err) throw err
@@ -26,7 +26,7 @@ router.get('/info', function(req, res, next) {
 
   var fs = require('fs'), obj;
   
-  fs.readFile('./private/ice.json', handleFile)
+  fs.readFile('../private/ice.json', handleFile)
  
   function handleFile(err, data) {
       if (err) throw err
