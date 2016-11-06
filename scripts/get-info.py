@@ -15,6 +15,8 @@ URL_MYPAGE=cfg["is"]['mypage']
 username=cfg["is"]["username"]
 password=cfg["is"]["password"]
 
+jsonfile="../private/ice.json"
+
 headers={"User-Agent":"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36"}
 
 s=requests.Session()
@@ -68,4 +70,8 @@ fa_data.append(fa_out[4]);
 
 obj = {"bandwidth": {"limit": ka_data[0], "usage": ka_data[1]}, "info": {"sim": fa_data[0], "ip": fa_data[1]}}
 
-print(json.dumps(obj))
+print (json.dumps(obj))
+
+with open(jsonfile, 'wt') as out:
+  out.write(json.dumps(obj))
+
