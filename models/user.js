@@ -1,12 +1,20 @@
 
 // models/user.js
 
-// get an instance of mongoose and mongoose.Schema
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var bcrypt   = require('bcrypt-nodejs');
 
-// set up a mongoose model and pass it using module.exports
-module.exports = mongoose.model('User', new Schema({ 
-    name: String, 
-    password: String
-}));
+var userSchema = mongoose.Schema({
+	email        : String,
+	password     : String
+});
+
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+module.exports = mongoose.model('User', userSchema);

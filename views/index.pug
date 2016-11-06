@@ -4,7 +4,7 @@ block content
   if (!user)
     a(href="/login") Login
     br
-    a(href="/register") Register
+    a(href="/signup") Signup
   if (user)
-    p You are currently logged in as #{user.username}
+    p You are currently logged in as #{user.email}
     a(href="/logout") Logout
