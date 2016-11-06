@@ -7,6 +7,6 @@ a {
 }
 
 .container {
-  margin-top: 10px;
-  margin-left: 10px;
+  margin: 10px;
+  padding: 0px;
 }

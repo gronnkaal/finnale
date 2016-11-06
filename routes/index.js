@@ -8,7 +8,10 @@ var router  = express.Router();
 module.exports = function (passport) {
 
 	router.get('/', isAuthenticated, function(req, res, next) {
-		res.render('index', { title: 'Admin', user: req.user });
+		res.render('index', { 
+			title: 'Admin',
+			user: req.user
+		});
 	});
 
 	//
@@ -16,11 +19,15 @@ module.exports = function (passport) {
 	//
 
 	router.get('/login', function(req, res, next) {
-		res.render('login', { message: req.flash('loginMessage') }); 
+		res.render('login', { 
+			message: req.flash('loginMessage') 
+		}); 
 	});
 
 	router.get('/signup', function(req, res) {
-		res.render('signup', { message: req.flash('signupMessage') });
+		res.render('signup', { 
+			message: req.flash('signupMessage') 
+		});
 	});
 
 	router.get('/logout', function(req, res) {
