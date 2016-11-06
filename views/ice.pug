@@ -1,15 +1,9 @@
 extends layout
 
 block content
-  h1= title
-
-    #wrapper
-
-      #iceBandwidth
-      p Usage: 
-        |  <span id='iceBandwidthUsed'></span> / <span id='iceBandwidthLimit'></span> MB
-      #iceInfo
-      p SIM: 
-        |  <span id='iceInfoSim'></span>
-      p IP: 
-        |  <span id='iceInfoIp'></span>
+  .container
+    h1= title
+    br
+    p Usage #[span#iceBandwidthUsed] / #[span#iceBandwidthLimit] MB
+    p SIM #[span#iceInfoSim]
+    p IP #[span#iceInfoIp]

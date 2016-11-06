@@ -7,7 +7,7 @@ var router  = express.Router();
 
 module.exports = function (passport) {
 
-	router.get('/', function(req, res, next) {
+	router.get('/', isAuthenticated, function(req, res, next) {
 		res.render('index', { title: 'Admin', user: req.user });
 	});
 
@@ -55,5 +55,5 @@ function isAuthenticated(req, res, next) {
     if (req.isAuthenticated())
         return next();
 
-    res.redirect('/');
+    res.redirect('/login');
 };

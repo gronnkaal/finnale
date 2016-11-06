@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET / */
-router.get('/', function(req, res, next) {
+router.get('/', isAuthenticated, function(req, res, next) {
   res.render('ice', { title: 'ICE'})
 });
 
@@ -35,5 +35,13 @@ router.get('/info', function(req, res, next) {
   }
 
 });
+
+function isAuthenticated(req, res, next) {
+
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/login');
+};
 
 module.exports = router;
