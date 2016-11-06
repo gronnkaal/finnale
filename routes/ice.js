@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET / */
 router.get('/', function(req, res, next) {
-  res.send('You have reached /ice');
+  res.render('ice', { title: 'ICE'})
 });
 
 /* GET /bandwidth */
