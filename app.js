@@ -3,15 +3,14 @@
 
 // set up ===================================================
 
-var express  = require('express');
-var app		 = express();
+var express  	 = require('express');
+var app		 	 = express();
 
-var path	 = require('path');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash 	 = require('connect-flash');
-var favicon  = require('serve-favicon');
-var logger	 = require('morgan');
+var path	 	 = require('path');
+var mongoose 	 = require('mongoose');
+var flash 	 	 = require('connect-flash');
+var favicon  	 = require('serve-favicon');
+var logger	 	 = require('morgan');
 
 var cookieParser = require('cookie-parser');
 var bodyParser 	 = require('body-parser');
@@ -19,17 +18,12 @@ var session 	 = require('express-session');
 
 // config ====================================================
 
-var configDB = require('./config/database.js');
-var passport = require('./config/passport');
+var config = require('config/config.js');
 
 // routes ====================================================
 
-var index = require('./routes/index')(passport);
-var users = require('./routes/users');
+var index = require('./routes/index');
 var ice	  = require('./routes/ice');
-
-// setup database connection
-mongoose.connect(configDB.url);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,13 +37,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({ secret: 'ilikedashitzioforsureyes' })); 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(session({ 
+	secret: config.secret,
+	resave: false,
+	saveUninitialized: false
+})); 
+
 app.use(flash());
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/ice', ice);
 
 // catch 404 and forward to error handler
