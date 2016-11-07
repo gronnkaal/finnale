@@ -19,7 +19,8 @@ var cookieParser = require('cookie-parser');
 
 // config ====================================================
 
-var config	= require('./config/config');
+var configDb = process.env.MONGODB_URI;
+var configSessionSecret = process.env.SESSION_SECRET;
 
 // routes ====================================================
 
@@ -27,7 +28,7 @@ var index	= require('./routes/index');
 var ice	  	= require('./routes/ice');
 
 // setup database connection
-mongoose.connect(config.db);
+mongoose.connect(configDb);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ 
-	secret: config.secret,
+	secret: configSessionSecret,
 	resave: false,
 	saveUninitialized: false
 }));
