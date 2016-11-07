@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET / */
+/*
 router.get('/', isAuthenticated, function(req, res, next) {
   res.render('ice', { title: 'ICE'})
 });
 
-/* GET /bandwidth */
+
 router.get('/bandwidth', function(req, res, next) {
 
   var fs = require('fs'), obj;
@@ -21,7 +21,7 @@ router.get('/bandwidth', function(req, res, next) {
 
 });
 
-/* GET /info */
+
 router.get('/info', function(req, res, next) {
 
   var fs = require('fs'), obj;
@@ -43,5 +43,7 @@ function isAuthenticated(req, res, next) {
 
     res.redirect('/login');
 };
+
+*/
 
 module.exports = router;
