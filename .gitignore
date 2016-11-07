@@ -2,3 +2,5 @@ node_modules
 private/*
 npm-debug.log
 scripts/config.yml
+.DS_Store
+*.env
