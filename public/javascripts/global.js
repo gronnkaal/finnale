@@ -1,11 +1,13 @@
 // DOM ready
 
 $(document).ready(function() {
-  getIceBandwidth();
-  getIceInfo();
+//   getIceBandwidth();
+//   getIceInfo();
 });
 
 // Functions
+
+/*
 
 function getIceBandwidth() {
   $.getJSON('/ice/bandwidth', function(data) {
@@ -26,3 +28,5 @@ function getIceInfo() {
     $('#iceInfoIp').text(data.ip);
   });
 };
+
+*/
