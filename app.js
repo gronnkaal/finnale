@@ -16,10 +16,11 @@ var passport	 = require('passport');
 var mongoose 	 = require('mongoose');
 var bodyParser 	 = require('body-parser');
 var cookieParser = require('cookie-parser');
+var MongoStore	 = require('connect-mongo')(session);
 
 // config ====================================================
 
-var configDb = process.env.MONGODB_URI;
+var configMongoUri = process.env.MONGODB_URI;
 var configSessionSecret = process.env.SESSION_SECRET;
 
 // routes ====================================================
@@ -27,8 +28,8 @@ var configSessionSecret = process.env.SESSION_SECRET;
 var index	= require('./routes/index');
 var ice	  	= require('./routes/ice');
 
-// setup database connection
-mongoose.connect(configDb);
+// setup mongodb connection
+mongoose.connect(configMongoUri);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +46,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ 
 	secret: configSessionSecret,
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+	store: new MongoStore({
+		mongooseConnection: mongoose.connection,
+		autoRemove: 'native'
+	})
 }));
 
 app.use(passport.initialize());
