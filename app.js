@@ -1,7 +1,7 @@
 
 // app.js
 
-// set up ===================================================
+// modules ===================================================
 
 var express  	 = require('express');
 var app		 	 = express();
@@ -16,6 +16,9 @@ var passport	 = require('passport');
 var mongoose 	 = require('mongoose');
 var bodyParser 	 = require('body-parser');
 var cookieParser = require('cookie-parser');
+
+// storage ===================================================
+
 var MongoStore	 = require('connect-mongo')(session);
 
 // config ====================================================
@@ -28,8 +31,13 @@ var configSessionSecret = process.env.SESSION_SECRET;
 var index	= require('./routes/index');
 var ice	  	= require('./routes/ice');
 
-// setup mongodb connection
+// database ==================================================
+
 mongoose.connect(configMongoUri);
+
+//
+//
+//
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,7 +51,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({ 
+app.use(session({
 	secret: configSessionSecret,
 	resave: false,
 	saveUninitialized: false,
