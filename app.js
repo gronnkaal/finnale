@@ -40,7 +40,8 @@ var ice	  	= require('./routes/ice');
 
 mongoose.connect(configMongoUri);
 
-//
+// 
+
 app.set('remoteUser', configRemoteUser);
 app.set('remotePass', configRemotePass);
 app.set('remoteUrl', configRemoteUrl); 
