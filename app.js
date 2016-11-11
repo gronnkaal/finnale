@@ -3,19 +3,21 @@
 
 // modules ===================================================
 
-var express  	 = require('express');
-var app		 	 = express();
+var express       = require('express');
+var app           = express();
 
-var path	 	 = require('path');
-var morgan	 	 = require('morgan');
-var favicon  	 = require('serve-favicon');
+var path          = require('path');
+var morgan        = require('morgan');
+var favicon       = require('serve-favicon');
+var bodyParser    = require('body-parser');
+var cookieParser  = require('cookie-parser');
 
-var flash    	 = require('connect-flash');
-var session      = require('express-session');
-var passport	 = require('passport');
-var mongoose 	 = require('mongoose');
-var bodyParser 	 = require('body-parser');
-var cookieParser = require('cookie-parser');
+var flash         = require('connect-flash');
+var session       = require('express-session');
+var passport      = require('passport');
+var mongoose      = require('mongoose');
+var cheerio       = require('cheerio');
+var request       = require('request');
 
 // storage ===================================================
 
@@ -25,6 +27,9 @@ var MongoStore	 = require('connect-mongo')(session);
 
 var configMongoUri = process.env.MONGODB_URI;
 var configSessionSecret = process.env.SESSION_SECRET;
+var configRemoteUrl = process.env.REMOTE_URL;
+var configRemoteUser = process.env.REMOTE_USER;
+var configRemotePass = process.env.REMOTE_PASS;
 
 // routes ====================================================
 
@@ -36,6 +41,10 @@ var ice	  	= require('./routes/ice');
 mongoose.connect(configMongoUri);
 
 //
+app.set('remoteUser', configRemoteUser);
+app.set('remotePass', configRemotePass);
+app.set('remoteUrl', configRemoteUrl); 
+
 //
 //
 
@@ -71,7 +80,7 @@ myPassport(passport);
 
 // setup routes
 app.use('/', index(passport));
-app.use('/ice', ice);
+app.use('/ice', ice(cheerio, request));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
