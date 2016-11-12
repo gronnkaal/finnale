@@ -65,7 +65,8 @@ module.exports = function (myCherrio, myRequest) {
                   tableData[i] = $(this).text().trim();
                 });
 
-                var bandwidthSim = tableData[3];
+            //    var bandwidthSim = tableData[3];
+                var bandwidthSim = "XXXXXXXXXX";
                 var bandwidthIp = tableData[4];
 
                 res.json({
