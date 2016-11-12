@@ -10,7 +10,7 @@ $(document).ready(function() {
 //
 
 function getIceInfo() {
-  $.getJSON('/ice/info', function(myInfo) {
+  $.getJSON('/ice', function(myInfo) {
 
     bwUsage = (myInfo.usage / 1000 / 1000).toFixed(2)
     bwLimit = (myInfo.limit / 1000 / 1000).toFixed(2)
