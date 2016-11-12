@@ -25,16 +25,16 @@ var MongoStore	 = require('connect-mongo')(session);
 
 // config ====================================================
 
-var configMongoUri = process.env.MONGODB_URI;
+var configMongoUri      = process.env.MONGODB_URI;
 var configSessionSecret = process.env.SESSION_SECRET;
-var configRemoteUrl = process.env.REMOTE_URL;
-var configRemoteUser = process.env.REMOTE_USER;
-var configRemotePass = process.env.REMOTE_PASS;
+var configRemoteUrl     = process.env.REMOTE_URL;
+var configRemoteUser    = process.env.REMOTE_USER;
+var configRemotePass    = process.env.REMOTE_PASS;
 
 // routes ====================================================
 
 var index	= require('./routes/index');
-var ice	  	= require('./routes/ice');
+var ice	  = require('./routes/ice');
 
 // database ==================================================
 

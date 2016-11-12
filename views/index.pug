@@ -5,8 +5,9 @@ block content
 		h1 Welcome
 		if (!user)
 			a(href="/login") Login
-			br
-			a(href="/signup") Signup
 		if (user)
 			p You are currently logged in as #{user.email}
+			p Usage #[span#iceBwUsage] / #[span#iceBwLimit] MB
+			p SIM #[span#iceInfoSim]
+			p IP #[span#iceInfoIp]
 			a(href="/logout") Logout

@@ -7,11 +7,7 @@ var router = express.Router();
 
 module.exports = function (myCherrio, myRequest) {
 
-  router.get('/', isAuthenticated, function(req, res, next) {
-    res.render('ice', { title: 'ICE'})
-  });
-
-  router.get('/info', function (req, res, next) {
+  router.get('/', function(req, res, next) {
 
     var myUrl = req.app.get('remoteUrl') + "/Default.aspx"; 
 
