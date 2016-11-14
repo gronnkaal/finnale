@@ -1,6 +1,7 @@
 
 // routes/index.js
 
+var request = require('request');
 var express = require('express');
 var router  = express.Router();
 
@@ -10,7 +11,7 @@ module.exports = function (passport) {
 	router.get('/', isAuthenticated, function(req, res, next) {
 		res.render('index', { 
 			title: 'Admin',
-			user: req.user
+			user: req.user,
 		});
 	});
 
@@ -63,3 +64,19 @@ function isAuthenticated(req, res, next) {
 
     res.redirect('/login');
 };
+
+function getJson (myUrl, callback) {
+	request({
+		url: myUrl,
+		json: true
+	}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			return callback(body);
+		} else {
+			return callback({ 
+				error: 'Oops.. something went wrong!',
+			});
+		};
+	});
+};
+

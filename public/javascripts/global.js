@@ -17,7 +17,7 @@ function getIceInfo() {
 
     $('#iceBwUsage').text(bwUsage);
     $('#iceBwLimit').text(bwLimit);
-    $('#iceInfoSim').text(myInfo.sim);
+//    $('#iceInfoSim').text(myInfo.sim);
     $('#iceInfoIp').text(myInfo.ip);
   });
 };

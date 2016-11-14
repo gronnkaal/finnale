@@ -30,6 +30,7 @@ var configSessionSecret = process.env.SESSION_SECRET;
 var configRemoteUrl     = process.env.REMOTE_URL;
 var configRemoteUser    = process.env.REMOTE_USER;
 var configRemotePass    = process.env.REMOTE_PASS;
+var configApiUrl        = process.env.API_URL;
 
 // routes ====================================================
 
@@ -38,13 +39,15 @@ var ice	  = require('./routes/ice');
 
 // database ==================================================
 
+mongoose.Promise = global.Promise;
 mongoose.connect(configMongoUri);
 
 // 
 
 app.set('remoteUser', configRemoteUser);
 app.set('remotePass', configRemotePass);
-app.set('remoteUrl', configRemoteUrl); 
+app.set('remoteSite', configRemoteUrl);
+app.set('apiUrl', configApiUrl);
 
 //
 //
@@ -79,9 +82,13 @@ app.use(flash());
 myPassport = require('./models/passport');
 myPassport(passport);
 
+// intialize ice
+myIce = require('./models/ice.js');
+myIce(configRemoteUrl, configRemoteUser, configRemotePass);
+
 // setup routes
 app.use('/', index(passport));
-app.use('/ice', ice(cheerio, request));
+app.use('/ice', ice());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

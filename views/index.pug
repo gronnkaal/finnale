@@ -1,14 +1,16 @@
 extends layout
 
 block content
-	script(src='/javascripts/global.js')
+	
 	.container
 		h1 Welcome
 		if (!user)
 			a(href="/login") Login
 		if (user)
-			p You are currently logged in as #{user.email}
-			p Usage #[span#iceBwUsage] / #[span#iceBwLimit] MB
-			p SIM #[span#iceInfoSim]
-			p IP #[span#iceInfoIp]
-			a(href="/logout") Logout
+			#info
+				p You are currently logged in as #{user.email}
+				a(href="/logout") Logout
+			br
+			#ice
+				p Usage: #[span#iceBwUsage] / #[span#iceBwLimit] MB
+				p IP: #[span#iceInfoIp]
