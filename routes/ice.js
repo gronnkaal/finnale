@@ -11,10 +11,7 @@ var Ice 	= require('../schema/ice.js');
 module.exports = function () {
 
   router.get('/', isAuthenticated, function(req, res, next) {
-    var q = Ice.find();
-      q.sort({_id:-1});
-      q.limit(1);
-      q.exec(function(err,obj) {
+    Ice.find().sort({_id:-1}).limit(1).exec(function(err,obj) {
         res.json({
           ip: obj[0].toObject().ip,
           usage: obj[0].toObject().usage,
