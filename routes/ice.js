@@ -14,10 +14,10 @@ module.exports = function () {
     Ice.find().sort({_id:-1}).limit(1).lean().exec(function(err,obj) {
       if (obj.length == 0) {
         res.json({
-          ip: 'xx.xx.xx.xx',
+          ip: '10.10.10.10',
           usage: 100000,
           limit: 1000000,
-          created: 'xx-xx-xx xx:xx',
+          created: '10-10-10 10:00',
         });
       } else {
         res.json({
