@@ -12,7 +12,7 @@ module.exports = function () {
 
   router.get('/', isAuthenticated, function(req, res, next) {
     Ice.find().sort({_id:-1}).limit(1).lean().exec(function(err,obj) {
-      if (err) {
+      if (obj.length == 0) {
         console.log('Error: No data found..');
         res.json({
           ip: 'xx.xx.xx.xx',
