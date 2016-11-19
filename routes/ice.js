@@ -13,11 +13,10 @@ module.exports = function () {
   router.get('/', isAuthenticated, function(req, res, next) {
     Ice.find().sort({_id:-1}).limit(1).lean().exec(function(err,obj) {
       if (obj.length == 0) {
-        console.log('Error: No data found..');
         res.json({
           ip: 'xx.xx.xx.xx',
-          usage: 'xxxx',
-          limit: 'yyyy',
+          usage: 100000,
+          limit: 1000000,
           created: 'xx-xx-xx xx:xx',
         });
       } else {

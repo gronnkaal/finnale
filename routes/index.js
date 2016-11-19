@@ -65,18 +65,3 @@ function isAuthenticated(req, res, next) {
     res.redirect('/login');
 };
 
-function getJson (myUrl, callback) {
-	request({
-		url: myUrl,
-		json: true
-	}, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			return callback(body);
-		} else {
-			return callback({ 
-				error: 'Oops.. something went wrong!',
-			});
-		};
-	});
-};
-
