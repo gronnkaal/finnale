@@ -3,14 +3,27 @@ extends layout
 block content
 	
 	.container
-		h1 Welcome
 		if (!user)
-			a(href="/login") Login
+			.row
+				.col-8
+					p You are not logged in
+				.col-4
+					a(href="/login") Login
 		if (user)
-			#info
-				p You are currently logged in as #{user.email}
-				a(href="/logout") Logout
-			br
-			#ice
-				p Usage: #[span#iceBwUsage] / #[span#iceBwLimit] MB
-				p IP: #[span#iceInfoIp]
+			.row
+				.col-md-12
+					h1 Welcome
+			.row
+				.col-md-4
+					p You are currently logged in as #{user.email}
+				.col-md-4
+					p IP:
+				.col-md-4
+					p Usage:
+			.row
+				.col-md-4
+					a(href="/logout") Logout
+				.col-md-4
+					p #[span#iceInfoIp]
+				.col-md-4
+					p #[span#iceBwUsage] / #[span#iceBwLimit] MB

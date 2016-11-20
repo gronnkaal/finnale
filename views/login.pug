@@ -2,13 +2,22 @@ extends layout
 
 block content
   .container
-    h1 Login
-    br
-    if (message.length > 0)
-      .alert.alert-danger= message
-    form(role='form', action="/login",method="post", style='max-width: 300px;')
-      .form-group
-        input.form-control(type='text', name="email", placeholder='Email')
-      .form-group
-        input.form-control(type='password', name="password", placeholder='Password')
-      button.btn.btn-warning(type='submit') Login
+    .row
+      .col-md-12
+        h1 Login
+    .row
+      .col-md-4
+        if (message.length > 0)
+          .alert.alert-danger= message
+      .col-md-4
+      .col-md-4
+    .row
+      .col-md-4
+        form(role='form', action="/login",method="post")
+          .form-group
+            input.form-control(type='text', name="email", placeholder='Email')
+          .form-group
+            input.form-control(type='password', name="password", placeholder='Password')
+          button.btn.btn-warning(type='submit') Login
+      .col-md-4
+      .col-md-4
