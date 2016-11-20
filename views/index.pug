@@ -14,16 +14,23 @@ block content
 				.col-md-12
 					h1 Welcome
 			.row
+				.col-md-2
+					p Username:
+				.col-md-2
+					p  #{user.email}
 				.col-md-4
-					p You are currently logged in as #{user.email}
-				.col-md-4
-					p IP:
-				.col-md-4
-					p Usage:
 			.row
-				.col-md-4
-					a(href="/logout") Logout
-				.col-md-4
+				.col-md-2
+					p IP address:
+				.col-md-2
 					p #[span#iceInfoIp]
-				.col-md-4
+				.col-md-8
+			.row
+				.col-md-2
+					p Bandwidth:
+				.col-md-2
 					p #[span#iceBwUsage] / #[span#iceBwLimit] MB
+				.col-md-8
+			.row
+				.col-md-12
+					a(href="/logout") Logout
