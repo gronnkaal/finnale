@@ -3,3 +3,7 @@
 Should include custom modifications of CSS
 
 */
+
+@-ms-viewport{
+  width: device-width;
+}
