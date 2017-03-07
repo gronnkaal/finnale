@@ -52,18 +52,21 @@ module.exports = function(site, user, pass) {
 					var a = $('.usage-progress-used').attr('value');
 					var b = $('.usage-progress-limit').attr('value');
 					var c = [];
+					var e = $('.usage-progress-limit-extra').attr('value');
 		            $('td', '#tblAbonnement').each(function(i, elem) {
 						c[i] = $(this).text().trim();
 					});
 
 					console.log('Usage: ' + a);
 					console.log('Limit: ' + b);
+					console.log('Extra: ' + e);
 					console.log('Table: ' + c);
 
 					// Dump data to mongo using our ice schema
 					var myIce = new Ice();
 					myIce.usage = a;
 					myIce.limit = b;
+					myIce.extra = e;
 					myIce.ip 	= c[4];
 
 					myIce.save(function(err) {

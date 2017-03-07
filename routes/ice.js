@@ -17,6 +17,7 @@ module.exports = function () {
           ip: '10.10.10.10',
           usage: 100000,
           limit: 1000000,
+          extra: 10000,
           created: '10-10-10 10:00',
         });
       } else {
@@ -24,6 +25,7 @@ module.exports = function () {
           ip: obj[0].ip,
           usage: obj[0].usage,
           limit: obj[0].limit,
+          extra: obj[0].extra,
           created: obj[0].created_at,
         });
       }

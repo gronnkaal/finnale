@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var iceSchema = mongoose.Schema({
 	usage: String,
 	limit: String,
+	extra: String,
 	ip: String,
 	created_at: Date,
 	updated_at: Date
