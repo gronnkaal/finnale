@@ -24,7 +24,7 @@ module.exports = function (passport) {
 		}); 
 	});
 
-	router.get('/signup', isAuthenticated, function(req, res) {
+	router.get('/signup', function(req, res) {
 		res.render('signup', { 
 			message: req.flash('signupMessage') 
 		});
