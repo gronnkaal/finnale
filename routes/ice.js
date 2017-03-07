@@ -17,7 +17,7 @@ module.exports = function () {
           ip: '10.10.10.10',
           usage: 100000,
           limit: 1000000,
-          extra: 10000,
+          extra: 0,
           created: '10-10-10 10:00',
         });
       } else {
