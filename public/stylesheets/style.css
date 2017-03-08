@@ -7,3 +7,15 @@ Should include custom modifications of CSS
 @-ms-viewport{
   width: device-width;
 }
+
+.progress {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+ }
