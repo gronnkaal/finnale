@@ -10,7 +10,7 @@ var Ice 	= require('../schema/ice.js');
 
 module.exports = function () {
 
-  router.get('/', isAuthenticated, function(req, res, next) {
+  router.get('/', isAuthenticated, function(req, res, next) {    
     Ice.find().sort({_id:-1}).limit(1).lean().exec(function(err,obj) {
       if (obj.length == 0) {
         res.json({
