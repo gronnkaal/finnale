@@ -19,9 +19,9 @@ function getIceInfo() {
     bwUsagePercent = (bwUsage / bwLimit * 100).toFixed(0);
     bwExtraPercent = (bwExtra / bwLimit * 100).toFixed(0);
 
-    $('#iceBwUsage').text(bwUsage);
-    $('#iceBwLimit').text(bwLimit);
-    $('#iceBwExtra').text(bwExtra);
+    $('#iceBwUsage').text(bwUsage + " MB");
+    $('#iceBwLimit').text(bwLimit + " MB");
+    $('#iceBwExtra').text(bwExtra + " MB");
     $('#iceInfoIp').text(myInfo.ip);
     $('#iceUsageProgress').css("width", bwUsagePercent + "%");
     $('#iceExtraProgress').css("width", bwExtraPercent + "%");

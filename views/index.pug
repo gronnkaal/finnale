@@ -3,55 +3,61 @@ extends layout
 block content
 	
 	.container
-		if (!user)
-			.row
-				.col-8
-					p You are not logged in
-				.col-4
-					a(href="/login") Login
-		if (user)
-			.row
-				.col-md-12
-					h2 Dashboard
-			.row
-				.col-md-2
-					p Username:
-				.col-md-2
-					p  #{user.email}
-				.col-md-4
-			.row
-				.col-md-2
-					p IP address:
-				.col-md-2
-					p #[span#iceInfoIp]
-				.col-md-8
-			.row
-				.col-md-2
-					p Bandwidth:
-				.col-md-2
-					.progress
-						.progress-bar.progress-bar-success(role="progressbar", id="iceUsageProgress", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100", style="width:0%") #[span#iceUsageInfo]
-					.progress
-						.progress-bar.progress-bar-success(role="progressbar", id="iceExtraProgress", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100", style="width:0%") #[span#iceExtraInfo]
-				.col-md-8
-			.row
-				.col-md-2
-					p Bandwidth Limit:
-				.col-md-2
-					p #[span#iceBwLimit] MB
-				.col-md-8
-			.row
-				.col-md-2
-					p Bandwidth Usage:
-				.col-md-2
-					p #[span#iceBwUsage] MB
-				.col-md-8
-			.row
-				.col-md-2
-					p Bandwidth Extra:
-				.col-md-2
-					p #[span#iceBwExtra] MB
-				.col-md-8
-			.row
-				.col-md-12
-					a(href="/logout") Logout
+		.row
+			if (!user)
+				.col-md-6.col-xs-6
+					.panel.panel-default
+						.panel-heading Login
+						.panel-body
+							p You are not logged in, a(href="/login") Login
+			if (user)
+				.col-md-6.col-xs-6
+					.panel.panel-default
+						.panel-heading Dashboard
+						.panel-body
+							.row
+								.col-md-5.col-xs-5
+									p Username: 
+								.col-md-5.col-xs-5
+									p #{user.email}
+							.row
+								.col-md-5.col-xs-5
+									p IP address: 
+								.col-md-5.col-xs-5
+									span#iceInfoIp
+							.row
+								.col-md-5.col-xs-5
+									p Bandwidth:
+								.col-md-5.col-xs-5
+									.progress
+										.progress-bar.progress-bar-success(role="progressbar", id="iceUsageProgress", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100", style="width:0%") #[span#iceUsageInfo]
+									.progress
+										.progress-bar.progress-bar-success(role="progressbar", id="iceExtraProgress", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100", style="width:0%") #[span#iceExtraInfo]
+							.row
+								.col-md-5.col-xs-5
+									p Bandwidth Limit:
+								.col-md-5.col-xs-5
+									span#iceBwLimit
+							.row
+								.col-md-5.col-xs-5
+									p Bandwidth Usage:
+								.col-md-5.col-xs-5
+									span#iceBwUsage
+							.row
+								.col-md-5.col-xs-5
+									p Bandwidth Extra:
+								.col-md-5.col-xs-5
+									span#iceBwExtra
+							.row
+								.col-md-12.col-xs-12
+									a(href="/logout") Logout
+				.col-md-6.col-xs-6
+					.panel.panel-default
+						.panel-heading Info
+						.panel-body
+							.row
+								.col-md-5.col-xs-5
+									p Test
+								.col-md-5.col-xs-5
+									p Test
+

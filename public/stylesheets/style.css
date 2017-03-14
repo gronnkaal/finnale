@@ -19,3 +19,7 @@ Should include custom modifications of CSS
     width: 100%;
     color: black;
  }
+
+.panel {
+	margin-top: 5px;
+}
