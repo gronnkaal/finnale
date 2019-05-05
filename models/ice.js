@@ -22,8 +22,9 @@ module.exports = function(site, user, pass) {
 		var tsN = new Date().getTime();
 		var tsD = new Date(doc.created_at).getTime();
 		var ts3 = (new Date().getTime() - (3 * 60 * 60 * 1000));
+		var ts0 = (new Date().getTime() - (10 * 1000));
 
-		if (tsD < ts3) {
+		if (tsD < ts0) {
 			console.log("Updating..");
 			doRequest(mySite,myUser,myPass);
 		} else {
@@ -39,32 +40,34 @@ function doRequest(site, user, pass) {
 	var myRequest = request.defaults({jar: true});
 
 	myRequest({
-		url: site + '/Default.aspx',
+		url: site + '/User/Login',
 	}, function(error, response, body) {
 
-		// Grab needed variables for POST-request
-		var $ = cheerio.load(body)
-		var x = $('#__EVENTVALIDATION').attr('value');
-		var y = $('#__VIEWSTATE').attr('value');
-
 		myRequest({
-			url: site + '/Default.aspx',
+			url: site + '/User/Login',
 			method: 'POST',
 			form: {
-	            __EVENTVALIDATION: x,
-	            __VIEWSTATE: y,
-	            ctl00$ContentPlaceHolder1$tbUserID: user,
-	            ctl00$ContentPlaceHolder1$tbPIN: pass,
-				ctl00$ContentPlaceHolder1$btnHiddenSubmit: "",	
+				Username: user,
+				Password: pass,
+				Submit: "",
 			},
 		}, function(error, response, body) {
 
 			myRequest({
-				url: site + '/MyPage.aspx',
+				url: site + '/Subscription',
 			}, function(error, response, body) {
 
 				// Grab wanted data from GET-request
 				var $ = cheerio.load(body)
+
+				$('div[class=val]').each(function(i, elm) {
+					console.log($(this).tex
+				$('div[class=content]').et().trim());
+				});ach(function(i, elm) {
+					console.log($(this).text().trim());
+				});
+
+				/*
 				var a = $('.usage-progress-used').attr('value');
 				var b = $('.usage-progress-limit').attr('value');
 				var c = [];
@@ -90,7 +93,7 @@ function doRequest(site, user, pass) {
 						throw err;
 					};
 				});
-
+				*/
 	            // c[3] - SIM
 				// c[4] - IP
 			});

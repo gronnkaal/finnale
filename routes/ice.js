@@ -20,7 +20,7 @@ module.exports = function () {
           extra: 0,
           created: '10-10-10 10:00',
         });
-      } else {
+      } else { 
         res.json({
           ip: obj[0].ip,
           usage: obj[0].usage,
